@@ -8,10 +8,10 @@
 const configuracion = {
 
   // ---- Datos principales ----
-  nombre: "Linda",
+  nombre: "Valentina",
   fraseCelebracion: "Mis 15 años",
-  fechaEvento: "2026-11-21T18:00:00", // formato: AAAA-MM-DDTHH:MM:SS (24 horas)
-  fechaEventoTextoLargo: "21 de Noviembre de 2026",
+  fechaEvento: "2026-12-15T19:00:00", // formato: AAAA-MM-DDTHH:MM:SS (24 horas)
+  fechaEventoTextoLargo: "15 de diciembre de 2026",
 
   fraseCovertada: "Hay momentos en la vida que se vuelven inolvidables. Hoy quiero compartir contigo uno de los más especiales: mis quince años.",
 
@@ -26,17 +26,17 @@ const configuracion = {
 
   // ---- Recepción ----
   recepcion: {
-    lugar: "Club Los Llaneros",
+    lugar: "Salón de eventos",
     direccion: "Dirección de ejemplo",
-    hora: "6:00 p. m.",
-    enlaceMapa: "https://maps.app.goo.gl/ALsBcwGii2uurQvv7"
+    hora: "7:00 p. m.",
+    enlaceMapa: "https://www.google.com/maps/search/?api=1&query=Salon+de+eventos+de+ejemplo"
   },
 
   codigoVestimenta: "Elegante / Formal",
 
   // Cambia a false si tu evento NO tiene ceremonia religiosa.
   // La tarjeta de recepción se acomodará y centrará sola.
-  mostrarCeremonia: false,
+  mostrarCeremonia: true,
 
   // ---- Mensaje de agradecimiento tras confirmar ----
   mensajeAgradecimiento: (nombre) =>
@@ -44,6 +44,12 @@ const configuracion = {
 
   // ---- Mesa de regalos ----
   mostrarMesaDeRegalos: true, // cambia a false para ocultar la sección
+
+  // ---- Confirmación de asistencia ----
+  mostrarConfirmacion: true, // cambia a false para ocultar la sección de RSVP
+
+  // ---- Mensaje especial (de los padres o de la quinceañera) ----
+  mostrarMensaje: true, // cambia a false para ocultar esta sección
 
   // ---- Música ----
   reproducirMusica: true, // cambia a false para ocultar el botón de música
@@ -110,6 +116,18 @@ function aplicarConfiguracion() {
   const seccionRegalos = document.getElementById("regalos");
   if (!configuracion.mostrarMesaDeRegalos) {
     seccionRegalos.classList.add("oculto");
+  }
+
+  // Mostrar u ocultar la confirmación de asistencia según configuración
+  const seccionConfirmacion = document.getElementById("confirmacion");
+  if (!configuracion.mostrarConfirmacion) {
+    seccionConfirmacion.classList.add("oculto");
+  }
+
+  // Mostrar u ocultar el mensaje especial según configuración
+  const seccionMensaje = document.getElementById("mensaje");
+  if (!configuracion.mostrarMensaje) {
+    seccionMensaje.classList.add("oculto");
   }
 
   // Mostrar u ocultar el botón de música según configuración
@@ -246,21 +264,38 @@ function iniciarMusica() {
   const audio = document.getElementById("audioFondo");
   const icono = document.getElementById("iconoMusica");
 
+  function reproducir() {
+    audio.play().catch(() => {
+      // Si el navegador bloquea la reproducción, no interrumpimos la experiencia.
+    });
+    boton.classList.add("sonando");
+    icono.textContent = "❚❚";
+    boton.setAttribute("aria-label", "Pausar música");
+  }
+
+  function pausar() {
+    audio.pause();
+    boton.classList.remove("sonando");
+    icono.textContent = "♪";
+    boton.setAttribute("aria-label", "Reproducir música");
+  }
+
   boton.addEventListener("click", () => {
     if (audio.paused) {
-      audio.play().catch(() => {
-        // Si el navegador bloquea la reproducción, no interrumpimos la experiencia.
-      });
-      boton.classList.add("sonando");
-      icono.textContent = "❚❚";
-      boton.setAttribute("aria-label", "Pausar música");
+      reproducir();
     } else {
-      audio.pause();
-      boton.classList.remove("sonando");
-      icono.textContent = "♪";
-      boton.setAttribute("aria-label", "Reproducir música");
+      pausar();
     }
   });
+
+  // Los navegadores no permiten reproducir audio automáticamente al cargar la
+  // página, pero SÍ lo permiten justo después de que el usuario haga un clic.
+  // Aprovechamos el botón "Ver invitación" de la portada: para el invitado se
+  // sentirá como si la música empezara sola al entrar.
+  if (configuracion.reproducirMusica) {
+    const botonComenzar = document.getElementById("btnComenzar");
+    botonComenzar.addEventListener("click", reproducir, { once: true });
+  }
 }
 
 
