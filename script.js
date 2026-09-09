@@ -8,10 +8,10 @@
 const configuracion = {
 
   // ---- Datos principales ----
-  nombre: "Valentina",
+  nombre: "Linda",
   fraseCelebracion: "Mis 15 años",
-  fechaEvento: "2026-12-15T19:00:00", // formato: AAAA-MM-DDTHH:MM:SS (24 horas)
-  fechaEventoTextoLargo: "15 de diciembre de 2026",
+  fechaEvento: "2026-11-21T19:00:00", // formato: AAAA-MM-DDTHH:MM:SS (24 horas)
+  fechaEventoTextoLargo: "21 de Noviembre de 2026",
 
   fraseCovertada: "Hay momentos en la vida que se vuelven inolvidables. Hoy quiero compartir contigo uno de los más especiales: mis quince años.",
 
@@ -26,17 +26,17 @@ const configuracion = {
 
   // ---- Recepción ----
   recepcion: {
-    lugar: "Salón de eventos",
-    direccion: "Dirección de ejemplo",
-    hora: "7:00 p. m.",
-    enlaceMapa: "https://www.google.com/maps/search/?api=1&query=Salon+de+eventos+de+ejemplo"
+    lugar: "Club Los Llaneros",
+    direccion: "Cra. 45, Villavicencio, Meta",
+    hora: "6:00 p. m.",
+    enlaceMapa: "https://maps.app.goo.gl/ALsBcwGii2uurQvv7"
   },
 
   codigoVestimenta: "Elegante / Formal",
 
   // Cambia a false si tu evento NO tiene ceremonia religiosa.
   // La tarjeta de recepción se acomodará y centrará sola.
-  mostrarCeremonia: true,
+  mostrarCeremonia: false,
 
   // ---- Mensaje de agradecimiento tras confirmar ----
   mensajeAgradecimiento: (nombre) =>
@@ -46,7 +46,7 @@ const configuracion = {
   mostrarMesaDeRegalos: true, // cambia a false para ocultar la sección
 
   // ---- Confirmación de asistencia ----
-  mostrarConfirmacion: true, // cambia a false para ocultar la sección de RSVP
+  mostrarConfirmacion: false, // cambia a false para ocultar la sección de RSVP
 
   // ---- Mensaje especial (de los padres o de la quinceañera) ----
   mostrarMensaje: true, // cambia a false para ocultar esta sección
