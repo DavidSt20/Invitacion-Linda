@@ -34,6 +34,10 @@ const configuracion = {
 
   codigoVestimenta: "Elegante / Formal",
 
+  // Cambia a false si tu evento NO tiene ceremonia religiosa.
+  // La tarjeta de recepción se acomodará y centrará sola.
+  mostrarCeremonia: true,
+
   // ---- Mensaje de agradecimiento tras confirmar ----
   mensajeAgradecimiento: (nombre) =>
     `¡Gracias por confirmar, ${nombre}! Nos alegra mucho saber que nos acompañarás.`,
@@ -95,6 +99,12 @@ function aplicarConfiguracion() {
   document.getElementById("mapaRecepcion").href = configuracion.recepcion.enlaceMapa;
 
   document.getElementById("codigoVestimenta").textContent = configuracion.codigoVestimenta;
+
+  // Si no hay ceremonia religiosa, ocultamos esa tarjeta y centramos la de recepción
+  if (!configuracion.mostrarCeremonia) {
+    document.getElementById("tarjetaCeremonia").classList.add("oculto");
+    document.getElementById("tarjetasDetalle").classList.add("una-tarjeta");
+  }
 
   // Mostrar u ocultar la mesa de regalos según configuración
   const seccionRegalos = document.getElementById("regalos");

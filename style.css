@@ -407,6 +407,13 @@ a {
   gap: 1.5rem;
 }
 
+/* Se aplica automáticamente desde script.js cuando no hay ceremonia religiosa */
+.tarjetas-detalle.una-tarjeta {
+  grid-template-columns: 1fr;
+  max-width: 380px;
+  margin: 0 auto;
+}
+
 .tarjeta-detalle {
   background: var(--color-blanco);
   border-radius: var(--radio-borde);
