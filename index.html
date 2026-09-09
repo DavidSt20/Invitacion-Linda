@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+<title>Mis 15 años · Valentina</title>
+<meta name="description" content="Invitación virtual de 15 años">
+
+<!-- Tipografías: Cormorant Garamond (elegante, para títulos) y Montserrat (para textos) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============================================= -->
+<!-- PÉTALOS DECORATIVOS (animación de fondo)       -->
+<!-- ============================================= -->
+<div class="petalos" id="petalos" aria-hidden="true"></div>
+
+<!-- ============================================= -->
+<!-- BOTÓN FLOTANTE DE MÚSICA                       -->
+<!-- ============================================= -->
+<button class="btn-musica" id="btnMusica" aria-label="Reproducir música">
+  <span id="iconoMusica">♪</span>
+</button>
+<audio id="audioFondo" loop preload="none">
+  <!-- Coloca aquí tu archivo de música. Ver sección 13 de la guía. -->
+  <source src="musica/cancion.mp3" type="audio/mpeg">
+</audio>
+
+<!-- ============================================= -->
+<!-- NAVEGACIÓN DISCRETA (puntos laterales)         -->
+<!-- ============================================= -->
+<nav class="nav-puntos" id="navPuntos" aria-label="Navegación de secciones">
+  <a href="#portada" class="punto activo" data-seccion="portada" aria-label="Portada"></a>
+  <a href="#cuenta-regresiva" class="punto" data-seccion="cuenta-regresiva" aria-label="Cuenta regresiva"></a>
+  <a href="#detalles" class="punto" data-seccion="detalles" aria-label="Detalles del evento"></a>
+  <a href="#mensaje" class="punto" data-seccion="mensaje" aria-label="Mensaje especial"></a>
+  <a href="#galeria" class="punto" data-seccion="galeria" aria-label="Galería"></a>
+  <a href="#confirmacion" class="punto" data-seccion="confirmacion" aria-label="Confirmación"></a>
+</nav>
+
+<!-- ============================================= -->
+<!-- 1. PORTADA                                     -->
+<!-- ============================================= -->
+<section id="portada" class="portada">
+  <div class="portada-fondo"></div>
+  <div class="portada-overlay"></div>
+  <div class="portada-contenido">
+    <p class="portada-eyebrow">Mis 15 años</p>
+    <h1 class="portada-nombre" id="nombrePortada">Valentina</h1>
+    <p class="portada-fecha" id="fechaPortada">15 de diciembre de 2026</p>
+    <p class="portada-frase" id="frasePortada">
+      Hay momentos en la vida que se vuelven inolvidables. Hoy quiero compartir
+      contigo uno de los más especiales: mis quince años.
+    </p>
+    <a href="#cuenta-regresiva" class="btn-principal">Ver invitación</a>
+  </div>
+  <div class="portada-scroll" aria-hidden="true">
+    <span></span>
+  </div>
+</section>
+
+<!-- ============================================= -->
+<!-- 2. CUENTA REGRESIVA                            -->
+<!-- ============================================= -->
+<section id="cuenta-regresiva" class="seccion cuenta-regresiva">
+  <p class="seccion-eyebrow">Falta muy poco</p>
+  <h2 class="seccion-titulo">Cuenta regresiva</h2>
+
+  <div class="reloj" id="reloj">
+    <div class="reloj-unidad">
+      <span class="reloj-numero" id="dias">00</span>
+      <span class="reloj-etiqueta">Días</span>
+    </div>
+    <div class="reloj-unidad">
+      <span class="reloj-numero" id="horas">00</span>
+      <span class="reloj-etiqueta">Horas</span>
+    </div>
+    <div class="reloj-unidad">
+      <span class="reloj-numero" id="minutos">00</span>
+      <span class="reloj-etiqueta">Minutos</span>
+    </div>
+    <div class="reloj-unidad">
+      <span class="reloj-numero" id="segundos">00</span>
+      <span class="reloj-etiqueta">Segundos</span>
+    </div>
+  </div>
+
+  <p class="reloj-mensaje-final" id="mensajeFinalCuenta" hidden>¡Hoy es el gran día! 🎉</p>
+
+  <button class="btn-secundario" id="btnCalendario">Agregar al calendario</button>
+</section>
+
+<!-- ============================================= -->
+<!-- 3. DETALLES DEL EVENTO                         -->
+<!-- ============================================= -->
+<section id="detalles" class="seccion detalles">
+  <p class="seccion-eyebrow">Los esperamos</p>
+  <h2 class="seccion-titulo">Detalles del evento</h2>
+
+  <div class="tarjetas-detalle">
+
+    <article class="tarjeta-detalle">
+      <div class="tarjeta-icono">⛪</div>
+      <h3>Ceremonia religiosa</h3>
+      <p class="tarjeta-lugar" id="lugarCeremonia">Parroquia Santa Bárbara</p>
+      <p class="tarjeta-direccion" id="direccionCeremonia">Calle de ejemplo #123, Ciudad</p>
+      <p class="tarjeta-hora" id="horaCeremonia">6:00 p. m.</p>
+      <a href="#" target="_blank" rel="noopener" class="btn-ubicacion" id="mapaCeremonia">Ver ubicación</a>
+    </article>
+
+    <article class="tarjeta-detalle">
+      <div class="tarjeta-icono">🥂</div>
+      <h3>Recepción</h3>
+      <p class="tarjeta-lugar" id="lugarRecepcion">Salón de eventos</p>
+      <p class="tarjeta-direccion" id="direccionRecepcion">Dirección de ejemplo</p>
+      <p class="tarjeta-hora" id="horaRecepcion">7:00 p. m.</p>
+      <a href="#" target="_blank" rel="noopener" class="btn-ubicacion" id="mapaRecepcion">Ver ubicación</a>
+    </article>
+
+  </div>
+
+  <div class="codigo-vestimenta">
+    <p class="seccion-eyebrow">Código de vestimenta</p>
+    <p class="vestimenta-texto" id="codigoVestimenta">Elegante / Formal</p>
+    <p class="vestimenta-frase">Tu presencia es nuestro mejor regalo.</p>
+  </div>
+</section>
+
+<!-- ============================================= -->
+<!-- 4. MENSAJE ESPECIAL                            -->
+<!-- ============================================= -->
+<section id="mensaje" class="seccion mensaje-especial">
+  <p class="seccion-eyebrow">Con cariño</p>
+  <h2 class="seccion-titulo">Un mensaje para ti</h2>
+  <div class="mensaje-marco">
+    <!-- Este texto es completamente editable. Ver guía, sección "Cómo cambiar los textos". -->
+    <p class="mensaje-texto">
+      Para nuestra querida Valentina:<br><br>
+      Desde el día en que llegaste a nuestras vidas, has llenado nuestro hogar
+      de alegría. Hoy celebramos tus quince años y le damos gracias a Dios por
+      tu vida. Deseamos que esta nueva etapa esté llena de bendiciones, sueños
+      y momentos inolvidables.
+    </p>
+    <p class="mensaje-firma">Con todo nuestro amor,<br>Tus padres</p>
+  </div>
+</section>
+
+<!-- ============================================= -->
+<!-- 5. GALERÍA DE FOTOS                            -->
+<!-- ============================================= -->
+<section id="galeria" class="seccion galeria">
+  <p class="seccion-eyebrow">Recuerdos</p>
+  <h2 class="seccion-titulo">Galería</h2>
+
+  <div class="galeria-grid" id="galeriaGrid">
+    <!-- Las imágenes se generan automáticamente desde script.js -->
+    <!-- Ver configuracion.galeria en script.js para agregar, quitar o cambiar fotos -->
+  </div>
+</section>
+
+<!-- Visor de imagen ampliada (lightbox) -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-cerrar" id="lightboxCerrar" aria-label="Cerrar imagen">&times;</button>
+  <img src="" alt="" id="lightboxImagen">
+</div>
+
+<!-- ============================================= -->
+<!-- 6. CONFIRMACIÓN DE ASISTENCIA                  -->
+<!-- ============================================= -->
+<section id="confirmacion" class="seccion confirmacion">
+  <p class="seccion-eyebrow">RSVP</p>
+  <h2 class="seccion-titulo">Confirma tu asistencia</h2>
+  <p class="confirmacion-subtexto">Por favor confirma antes del 1 de diciembre de 2026.</p>
+
+  <form id="formConfirmacion" class="form-confirmacion">
+    <label for="nombreInvitado">Nombre completo</label>
+    <input type="text" id="nombreInvitado" name="nombreInvitado" placeholder="Escribe tu nombre" required>
+
+    <label for="asistencia">¿Asistirás?</label>
+    <select id="asistencia" name="asistencia" required>
+      <option value="" disabled selected>Selecciona una opción</option>
+      <option value="si">Sí, ahí estaré</option>
+      <option value="no">No podré asistir</option>
+    </select>
+
+    <label for="acompanantes">Número de acompañantes</label>
+    <input type="number" id="acompanantes" name="acompanantes" min="0" max="10" value="0">
+
+    <button type="submit" class="btn-principal">Confirmar asistencia</button>
+  </form>
+
+  <div class="confirmacion-gracias" id="confirmacionGracias" hidden>
+    <p id="mensajeGracias">¡Gracias por confirmar! Nos alegra mucho saber que nos acompañarás.</p>
+  </div>
+
+  <p class="confirmacion-nota">
+    Nota: en esta versión, la confirmación se muestra en pantalla pero no se
+    guarda automáticamente en ningún lugar. Consulta la guía adjunta para
+    conectar este formulario a Google Sheets u otro servicio gratuito.
+  </p>
+</section>
+
+<!-- ============================================= -->
+<!-- 7. MESA DE REGALOS (sección opcional)          -->
+<!-- ============================================= -->
+<section id="regalos" class="seccion mesa-regalos">
+  <p class="seccion-eyebrow">Detalle</p>
+  <h2 class="seccion-titulo">Mesa de regalos</h2>
+  <div class="sobres-decorativos" aria-hidden="true">✉️ ✉️ ✉️</div>
+  <p class="regalos-texto">
+    Tu presencia es el regalo más importante para nosotros. Si deseas tener un
+    detalle adicional, una lluvia de sobres será muy bien recibida.
+  </p>
+</section>
+
+<footer class="pie">
+  <p>Con todo mi cariño, gracias por acompañarme.</p>
+  <p class="pie-nombre" id="nombrePie">Valentina</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

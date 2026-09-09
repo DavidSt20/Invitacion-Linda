@@ -1,0 +1,683 @@
+/* =====================================================
+   VARIABLES DE PERSONALIZACIÓN
+   Cambia estos valores para adaptar la invitación a
+   otra quinceañera sin tocar el resto del CSS.
+   ===================================================== */
+:root {
+  /* Colores principales (degradado morado -> azul) */
+  --color-principal: #6B4E9E;      /* morado */
+  --color-secundario: #4A6FB5;     /* azul */
+  --color-degradado: linear-gradient(135deg, #6B4E9E 0%, #7A5DAE 45%, #4A6FB5 100%);
+
+  /* Colores de acento */
+  --color-dorado: #D4AF37;
+  --color-rosa-palo: #F3D9DD;
+  --color-crema: #FFFAF3;
+
+  /* Colores base */
+  --color-fondo: #FFFAF5;
+  --color-texto: #3A2E4D;
+  --color-texto-suave: #6E6079;
+  --color-blanco: #FFFFFF;
+
+  /* Tipografías */
+  --fuente-titulos: "Cormorant Garamond", "Georgia", serif;
+  --fuente-texto: "Montserrat", "Helvetica Neue", sans-serif;
+
+  /* Espaciados */
+  --espacio-seccion: 5rem 1.5rem;
+  --radio-borde: 18px;
+  --sombra-suave: 0 10px 30px rgba(107, 78, 158, 0.15);
+}
+
+/* =====================================================
+   RESET Y BASE
+   ===================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--fuente-texto);
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* =====================================================
+   PÉTALOS DECORATIVOS
+   ===================================================== */
+.petalos {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5;
+  overflow: hidden;
+}
+
+.petalo {
+  position: absolute;
+  top: -5%;
+  font-size: 1.1rem;
+  color: var(--color-rosa-palo);
+  opacity: 0.85;
+  animation: caer linear forwards;
+}
+
+@keyframes caer {
+  to {
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* =====================================================
+   BOTÓN DE MÚSICA
+   ===================================================== */
+.btn-musica {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: none;
+  background: var(--color-degradado);
+  color: var(--color-blanco);
+  font-size: 1.3rem;
+  cursor: pointer;
+  z-index: 50;
+  box-shadow: var(--sombra-suave);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.25s ease;
+}
+
+.btn-musica:hover {
+  transform: scale(1.08);
+}
+
+.btn-musica.sonando #iconoMusica {
+  animation: girar 3s linear infinite;
+}
+
+@keyframes girar {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* =====================================================
+   NAVEGACIÓN DE PUNTOS
+   ===================================================== */
+.nav-puntos {
+  position: fixed;
+  top: 50%;
+  right: 1.2rem;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  z-index: 50;
+}
+
+.punto {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: rgba(107, 78, 158, 0.3);
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.punto.activo {
+  background: var(--color-principal);
+  transform: scale(1.4);
+}
+
+@media (max-width: 640px) {
+  .nav-puntos { display: none; }
+}
+
+/* =====================================================
+   PORTADA
+   ===================================================== */
+.portada {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+.portada-fondo {
+  position: absolute;
+  inset: 0;
+  /* IMAGEN DE MUESTRA: reemplaza esta URL por img/portada.jpg */
+  background-image: url("https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80");
+  background-size: cover;
+  background-position: center;
+  z-index: -2;
+}
+
+.portada-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(43, 25, 74, 0.55) 0%, rgba(74, 111, 181, 0.75) 100%);
+  z-index: -1;
+}
+
+.portada-contenido {
+  color: var(--color-blanco);
+  padding: 2rem 1.5rem;
+  max-width: 560px;
+  animation: aparecer 1.4s ease both;
+}
+
+@keyframes aparecer {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.portada-eyebrow {
+  font-family: var(--fuente-texto);
+  letter-spacing: 0.15em;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--color-rosa-palo);
+  margin-bottom: 0.5rem;
+}
+
+.portada-nombre {
+  font-family: var(--fuente-titulos);
+  font-size: clamp(3rem, 12vw, 5.5rem);
+  font-weight: 500;
+  font-style: italic;
+  line-height: 1;
+  margin-bottom: 0.8rem;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.25);
+}
+
+.portada-fecha {
+  font-size: 1.05rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  margin-bottom: 1.6rem;
+  color: var(--color-crema);
+}
+
+.portada-frase {
+  font-size: 0.98rem;
+  font-weight: 300;
+  line-height: 1.7;
+  margin-bottom: 2.2rem;
+  color: rgba(255,255,255,0.92);
+}
+
+.portada-scroll {
+  position: absolute;
+  bottom: 1.8rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 22px;
+  height: 36px;
+  border: 2px solid rgba(255,255,255,0.6);
+  border-radius: 20px;
+}
+
+.portada-scroll span {
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  width: 4px;
+  height: 8px;
+  background: var(--color-blanco);
+  border-radius: 3px;
+  transform: translateX(-50%);
+  animation: rebote 1.6s ease-in-out infinite;
+}
+
+@keyframes rebote {
+  0%, 100% { top: 6px; opacity: 1; }
+  50% { top: 16px; opacity: 0.4; }
+}
+
+/* =====================================================
+   BOTONES
+   ===================================================== */
+.btn-principal {
+  display: inline-block;
+  background: var(--color-degradado);
+  color: var(--color-blanco);
+  padding: 0.9rem 2.4rem;
+  border: none;
+  border-radius: 40px;
+  font-family: var(--fuente-texto);
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  box-shadow: var(--sombra-suave);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.btn-principal:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 34px rgba(107, 78, 158, 0.28);
+}
+
+.btn-secundario {
+  display: inline-block;
+  margin-top: 2.2rem;
+  background: transparent;
+  color: var(--color-principal);
+  padding: 0.8rem 2rem;
+  border: 1.5px solid var(--color-principal);
+  border-radius: 40px;
+  font-family: var(--fuente-texto);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+.btn-secundario:hover {
+  background: var(--color-principal);
+  color: var(--color-blanco);
+}
+
+.btn-ubicacion {
+  display: inline-block;
+  margin-top: 1.1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-secundario);
+  border-bottom: 1.5px solid var(--color-secundario);
+  padding-bottom: 2px;
+}
+
+/* =====================================================
+   SECCIONES GENERALES
+   ===================================================== */
+.seccion {
+  padding: var(--espacio-seccion);
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.seccion-eyebrow {
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: var(--color-dorado);
+  margin-bottom: 0.4rem;
+}
+
+.seccion-titulo {
+  font-family: var(--fuente-titulos);
+  font-style: italic;
+  font-size: clamp(2rem, 6vw, 2.8rem);
+  font-weight: 500;
+  color: var(--color-principal);
+  margin-bottom: 2.4rem;
+}
+
+/* =====================================================
+   CUENTA REGRESIVA
+   ===================================================== */
+.reloj {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.reloj-unidad {
+  background: var(--color-blanco);
+  border-radius: var(--radio-borde);
+  padding: 1.2rem 1rem;
+  min-width: 80px;
+  box-shadow: var(--sombra-suave);
+  border: 1px solid var(--color-rosa-palo);
+}
+
+.reloj-numero {
+  display: block;
+  font-family: var(--fuente-titulos);
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: var(--color-principal);
+  line-height: 1;
+}
+
+.reloj-etiqueta {
+  display: block;
+  margin-top: 0.4rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  color: var(--color-texto-suave);
+}
+
+.reloj-mensaje-final {
+  margin-top: 2rem;
+  font-family: var(--fuente-titulos);
+  font-style: italic;
+  font-size: 1.8rem;
+  color: var(--color-dorado);
+}
+
+/* =====================================================
+   DETALLES DEL EVENTO
+   ===================================================== */
+.detalles {
+  background: linear-gradient(180deg, var(--color-crema) 0%, var(--color-fondo) 100%);
+}
+
+.tarjetas-detalle {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+.tarjeta-detalle {
+  background: var(--color-blanco);
+  border-radius: var(--radio-borde);
+  padding: 2.2rem 1.6rem;
+  box-shadow: var(--sombra-suave);
+  border-top: 3px solid var(--color-principal);
+}
+
+.tarjeta-icono {
+  font-size: 1.8rem;
+  margin-bottom: 0.8rem;
+}
+
+.tarjeta-detalle h3 {
+  font-family: var(--fuente-titulos);
+  font-size: 1.4rem;
+  color: var(--color-principal);
+  margin-bottom: 0.7rem;
+}
+
+.tarjeta-lugar {
+  font-weight: 600;
+}
+
+.tarjeta-direccion,
+.tarjeta-hora {
+  color: var(--color-texto-suave);
+  font-size: 0.92rem;
+  margin-top: 0.2rem;
+}
+
+.codigo-vestimenta {
+  margin-top: 3rem;
+  padding: 2rem;
+  background: var(--color-rosa-palo);
+  border-radius: var(--radio-borde);
+}
+
+.vestimenta-texto {
+  font-family: var(--fuente-titulos);
+  font-style: italic;
+  font-size: 1.6rem;
+  color: var(--color-principal);
+  margin: 0.3rem 0 0.6rem;
+}
+
+.vestimenta-frase {
+  font-size: 0.88rem;
+  color: var(--color-texto-suave);
+}
+
+/* =====================================================
+   MENSAJE ESPECIAL
+   ===================================================== */
+.mensaje-especial {
+  background: var(--color-degradado);
+  color: var(--color-blanco);
+  border-radius: 0;
+  padding: 5rem 1.5rem;
+}
+
+.mensaje-especial .seccion-eyebrow {
+  color: var(--color-rosa-palo);
+}
+
+.mensaje-especial .seccion-titulo {
+  color: var(--color-blanco);
+}
+
+.mensaje-marco {
+  border: 1px solid rgba(255,255,255,0.35);
+  border-radius: var(--radio-borde);
+  padding: 2.4rem 1.8rem;
+}
+
+.mensaje-texto {
+  font-size: 1.05rem;
+  font-weight: 300;
+  line-height: 1.9;
+}
+
+.mensaje-firma {
+  margin-top: 1.6rem;
+  font-family: var(--fuente-titulos);
+  font-style: italic;
+  font-size: 1.2rem;
+  color: var(--color-dorado);
+}
+
+/* =====================================================
+   GALERÍA
+   ===================================================== */
+.galeria-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0.8rem;
+}
+
+.galeria-item {
+  overflow: hidden;
+  border-radius: 12px;
+  cursor: pointer;
+  aspect-ratio: 1 / 1;
+  box-shadow: var(--sombra-suave);
+}
+
+.galeria-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.galeria-item:hover img {
+  transform: scale(1.08);
+}
+
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(20, 12, 34, 0.92);
+  z-index: 100;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.lightbox.abierto {
+  display: flex;
+}
+
+.lightbox img {
+  max-width: 100%;
+  max-height: 85vh;
+  border-radius: 10px;
+  animation: aparecer 0.3s ease both;
+}
+
+.lightbox-cerrar {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.5rem;
+  background: none;
+  border: none;
+  color: var(--color-blanco);
+  font-size: 2.2rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+/* =====================================================
+   CONFIRMACIÓN DE ASISTENCIA
+   ===================================================== */
+.confirmacion-subtexto {
+  color: var(--color-texto-suave);
+  margin-bottom: 2rem;
+  margin-top: -1.5rem;
+}
+
+.form-confirmacion {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  max-width: 420px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.form-confirmacion label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-texto);
+  margin-bottom: -0.6rem;
+}
+
+.form-confirmacion input,
+.form-confirmacion select {
+  padding: 0.8rem 1rem;
+  border-radius: 10px;
+  border: 1.5px solid var(--color-rosa-palo);
+  font-family: var(--fuente-texto);
+  font-size: 0.95rem;
+  background: var(--color-blanco);
+  color: var(--color-texto);
+}
+
+.form-confirmacion input:focus,
+.form-confirmacion select:focus {
+  outline: 2px solid var(--color-secundario);
+  outline-offset: 1px;
+}
+
+.form-confirmacion .btn-principal {
+  margin-top: 0.5rem;
+  border: none;
+}
+
+.confirmacion-gracias {
+  max-width: 420px;
+  margin: 1.5rem auto 0;
+  padding: 1.4rem;
+  background: var(--color-rosa-palo);
+  border-radius: var(--radio-borde);
+  font-weight: 500;
+}
+
+.confirmacion-nota {
+  max-width: 480px;
+  margin: 2rem auto 0;
+  font-size: 0.78rem;
+  color: var(--color-texto-suave);
+  line-height: 1.6;
+}
+
+/* =====================================================
+   MESA DE REGALOS
+   ===================================================== */
+.mesa-regalos {
+  background: var(--color-crema);
+}
+
+.sobres-decorativos {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  letter-spacing: 0.5rem;
+}
+
+.regalos-texto {
+  max-width: 480px;
+  margin: 0 auto;
+  color: var(--color-texto-suave);
+}
+
+/* Para ocultar esta sección en otra invitación, agrega
+   la clase "oculto" al <section id="regalos"> en el HTML,
+   o bórrala directamente. Ver guía sección 15. */
+.oculto {
+  display: none !important;
+}
+
+/* =====================================================
+   PIE DE PÁGINA
+   ===================================================== */
+.pie {
+  text-align: center;
+  padding: 3rem 1.5rem 2.5rem;
+  color: var(--color-texto-suave);
+  font-size: 0.85rem;
+}
+
+.pie-nombre {
+  margin-top: 0.4rem;
+  font-family: var(--fuente-titulos);
+  font-style: italic;
+  font-size: 1.4rem;
+  color: var(--color-principal);
+}
+
+/* =====================================================
+   RESPONSIVE — prioridad a celulares
+   ===================================================== */
+@media (max-width: 480px) {
+  :root {
+    --espacio-seccion: 3.5rem 1.2rem;
+  }
+  .reloj-unidad {
+    min-width: 68px;
+    padding: 1rem 0.6rem;
+  }
+  .reloj-numero {
+    font-size: 1.7rem;
+  }
+}
