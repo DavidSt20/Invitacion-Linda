@@ -183,7 +183,7 @@ a {
   /* IMAGEN DE MUESTRA: reemplaza esta URL por img/portada.jpg */
   background-image: url("img/Principal.jpg");
   background-size: cover;
-  background-position: center 45%;
+  background-position: center 40%;
   z-index: -2;
 }
 
