@@ -62,12 +62,11 @@ const configuracion = {
   // plantilla se vea completa sin fotos reales. Para usar TUS fotos, cambia
   // cada "src" por la ruta local, por ejemplo: "img/foto1.jpg"
   galeria: [
-    { src: "https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=600&q=80", alt: "Fotografía de Valentina 1" },
-    { src: "https://images.unsplash.com/photo-1529636798458-92182e662485?auto=format&fit=crop&w=600&q=80", alt: "Fotografía de Valentina 2" },
-    { src: "https://images.unsplash.com/photo-1470137237906-d8a4f71e1966?auto=format&fit=crop&w=600&q=80", alt: "Fotografía de Valentina 3" },
-    { src: "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&w=600&q=80", alt: "Fotografía de Valentina 4" },
-    { src: "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=600&q=80", alt: "Fotografía de Valentina 5" },
-    { src: "https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=600&q=80", alt: "Fotografía de Valentina 6" }
+    { src: "img/Galeria1.jpg", alt: "Fotografía de Familia 1" },
+    { src: "img/Galeria2.jpg", alt: "Papas y Linda 2" },
+    { src: "img/Galeria3.jpg", alt: "Hermano y Linda 3" },
+    { src: "img/Galeria4.jpg", alt: "Linda 4" },
+    { src: "img/Galeria5.jpg", alt: "Linda y Frisbee 5" },
   ]
 };
 
