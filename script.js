@@ -8,7 +8,7 @@
 const configuracion = {
 
   // ---- Datos principales ----
-  nombre: "Linda",
+  nombre: "Linda Eileen Stephanie",
   fraseCelebracion: "Mis 15 años",
   fechaEvento: "2026-11-21T19:00:00", // formato: AAAA-MM-DDTHH:MM:SS (24 horas)
   fechaEventoTextoLargo: "21 de Noviembre de 2026",
