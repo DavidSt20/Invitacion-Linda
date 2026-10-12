@@ -673,42 +673,6 @@ a {
   color: var(--color-principal);
 }
 
-/* ===== Fondo con foto en la cuenta regresiva ===== */
-.cuenta-regresiva {
-  max-width: none;            /* para que la foto ocupe todo el ancho */
-  position: relative;
-  padding-bottom: 9rem;       /* espacio para el difuminado inferior */
-  background-image:
-    linear-gradient(180deg, rgba(43, 25, 74, 0.70) 0%, rgba(74, 111, 181, 0.60) 100%),
-    url("img/Fondo.jpg");
-  background-size: cover;
-  background-position: center;
-}
-
-/* Difuminado hacia el color crema de la siguiente sección */
-.cuenta-regresiva::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 7rem;
-  background: linear-gradient(180deg, rgba(255, 250, 245, 0) 0%, var(--color-fondo) 100%);
-  pointer-events: none;
-}
-
-/* Textos en claro, porque ahora están sobre fondo oscuro */
-.cuenta-regresiva .seccion-eyebrow { color: var(--color-rosa-palo); }
-.cuenta-regresiva .seccion-titulo { color: var(--color-blanco); }
-.cuenta-regresiva .btn-secundario {
-  color: var(--color-blanco);
-  border-color: var(--color-blanco);
-}
-.cuenta-regresiva .btn-secundario:hover {
-  background: var(--color-blanco);
-  color: var(--color-principal);
-}
-
 /* =====================================================
    RESPONSIVE — prioridad a celulares
    ===================================================== */
