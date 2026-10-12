@@ -67,6 +67,7 @@ const configuracion = {
     { src: "img/Galeria3.jpg", alt: "Hermano y Linda 3" },
     { src: "img/Galeria4.jpg", alt: "Linda 4" },
     { src: "img/Galeria5.jpg", alt: "Linda y Frisbee 5" },
+    { src: "img/Fondo.jpg", alt: "Familia y perros" }, 
   ]
 };
 
